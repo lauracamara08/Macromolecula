@@ -1,14 +1,20 @@
 var botaoTema = document.getElementById("botaoTema");
 var temaSalvo = localStorage.getItem("tema");
+
 if (temaSalvo == "escuro") {
   document.body.classList.add("dark");
 }
+
 if (botaoTema != null) {
   if (temaSalvo == "escuro") {
     botaoTema.innerHTML = "Tema claro";
+  } else {
+    botaoTema.innerHTML = "Tema escuro";
   }
+
   botaoTema.onclick = function () {
     document.body.classList.toggle("dark");
+
     if (document.body.classList.contains("dark")) {
       localStorage.setItem("tema", "escuro");
       botaoTema.innerHTML = "Tema claro";
@@ -19,253 +25,320 @@ if (botaoTema != null) {
   };
 }
 
-var conteudoExtra = document.getElementById("conteudoExtra");
-var botaoMais = document.getElementById("botaoMais");
-if (botaoMais != null && conteudoExtra != null) {
-  botaoMais.onclick = function () {
-    if (conteudoExtra.style.display == "none") {
-      conteudoExtra.style.display = "block";
-      botaoMais.innerHTML = "Ver menos";
-    } else {
-      conteudoExtra.style.display = "none";
-      botaoMais.innerHTML = "Ver mais";
-    }
-  };
-}
-var conteudoExtraProteinas = document.getElementById("conteudoExtraProteinas");
-var botaoMaisProteinas = document.getElementById("botaoMaisProteinas");
-if (botaoMaisProteinas != null && conteudoExtraProteinas != null) {
-  botaoMaisProteinas.onclick = function () {
-    if (conteudoExtraProteinas.style.display == "none") {
-      conteudoExtraProteinas.style.display = "block";
-      botaoMaisProteinas.innerHTML = "Ver menos";
-    } else {
-      conteudoExtraProteinas.style.display = "none";
-      botaoMaisProteinas.innerHTML = "Ver mais";
-    }
-  };
+var botoesMais = document.getElementsByClassName("botaoMais");
+var conteudosExtras = document.getElementsByClassName("conteudoExtra");
+
+for (var i = 0; i < botoesMais.length; i++) {
+  if (conteudosExtras[i] != null) {
+    conteudosExtras[i].style.display = "none";
+    botoesMais[i].innerHTML = "Ver mais";
+
+    botoesMais[i].onclick = function () {
+      var numero = 0;
+
+      for (var j = 0; j < botoesMais.length; j++) {
+        if (botoesMais[j] == this) {
+          numero = j;
+        }
+      }
+
+      if (conteudosExtras[numero].style.display == "none") {
+        conteudosExtras[numero].style.display = "block";
+        this.innerHTML = "Ver menos";
+      } else {
+        conteudosExtras[numero].style.display = "none";
+        this.innerHTML = "Ver mais";
+      }
+    };
+  }
 }
 
+var itensMenu = document.getElementsByClassName("menu");
 var botaoMenu = document.getElementById("botaoMenu");
-var menus = document.getElementsByClassName("menu");
-if (botaoMenu != null && menus.length > 0) {
+
+if (botaoMenu != null && itensMenu.length > 0) {
   botaoMenu.onclick = function () {
-    menus[0].classList.toggle("aberto");
-    if (menus[0].classList.contains("aberto")) {
-      botaoMenu.innerHTML = "Fechar menu";
-    } else {
-      botaoMenu.innerHTML = "Menu";
-    }
+    itensMenu[0].classList.toggle("mostrar");
   };
 }
 
-var botaoAbrirModal = document.getElementById("botaoAbrirModal");
+var botaoModal = document.getElementById("botaoModal");
+var modal = document.getElementById("modal");
 var botaoFecharModal = document.getElementById("botaoFecharModal");
-var modalLipidios = document.getElementById("modalLipidios");
-if (
-  botaoAbrirModal != null &&
-  botaoFecharModal != null &&
-  modalLipidios != null
-) {
-  botaoAbrirModal.onclick = function () {
-    modalLipidios.style.display = "flex";
-  };
 
+if (botaoModal != null && modal != null) {
+  botaoModal.onclick = function () {
+    modal.style.display = "block";
+  };
+}
+
+if (botaoFecharModal != null && modal != null) {
   botaoFecharModal.onclick = function () {
-    modalLipidios.style.display = "none";
+    modal.style.display = "none";
+  };
+}
+
+var botaoSimples = document.getElementById("botaoSimples");
+var botaoComplexos = document.getElementById("botaoComplexos");
+var informacaoSimples = document.getElementById("informacaoSimples");
+var informacaoComplexos = document.getElementById("informacaoComplexos");
+
+if (informacaoSimples != null) {
+  informacaoSimples.style.display = "block";
+}
+
+if (informacaoComplexos != null) {
+  informacaoComplexos.style.display = "none";
+}
+
+if (botaoSimples != null && informacaoSimples != null && informacaoComplexos != null) {
+  botaoSimples.onclick = function () {
+    informacaoSimples.style.display = "block";
+    informacaoComplexos.style.display = "none";
+  };
+}
+
+if (botaoComplexos != null && informacaoSimples != null && informacaoComplexos != null) {
+  botaoComplexos.onclick = function () {
+    informacaoSimples.style.display = "none";
+    informacaoComplexos.style.display = "block";
   };
 }
 
 var respostasQuiz = ["C", "D", "B", "A", "D"];
+
 function verificarQuestao(numero) {
   var alternativas = document.getElementsByName("questao" + numero);
+  var respostaUsuario = "";
   var feedback = document.getElementById("feedback" + numero);
-  var respostaSelecionada = "";
+
   for (var i = 0; i < alternativas.length; i++) {
     if (alternativas[i].checked) {
-      respostaSelecionada = alternativas[i].value;
+      respostaUsuario = alternativas[i].value;
     }
   }
-  if (respostaSelecionada == "") {
-    feedback.innerHTML = "Escolha uma alternativa.";
-  } else if (respostaSelecionada == respostasQuiz[numero - 1]) {
-    feedback.innerHTML = "Resposta correta!";
-  } else {
-    feedback.innerHTML = "Resposta incorreta. Tente outra alternativa.";
+
+  if (feedback != null) {
+    if (respostaUsuario == "") {
+      feedback.innerHTML = "Selecione uma alternativa.";
+    } else if (respostaUsuario == respostasQuiz[numero - 1]) {
+      feedback.innerHTML = "Resposta correta!";
+    } else {
+      feedback.innerHTML = "Resposta incorreta. Tente novamente!";
+    }
   }
 }
 
 function finalizarQuiz() {
   var pontuacao = 0;
 
-  for (var numero = 1; numero <= respostasQuiz.length; numero++) {
-    var alternativas = document.getElementsByName("questao" + numero);
-    var feedback = document.getElementById("feedback" + numero);
-    var respostaSelecionada = "";
+  for (var i = 1; i <= respostasQuiz.length; i++) {
+    var alternativas = document.getElementsByName("questao" + i);
+    var respostaUsuario = "";
+    var feedback = document.getElementById("feedback" + i);
 
-    for (var i = 0; i < alternativas.length; i++) {
-      if (alternativas[i].checked) {
-        respostaSelecionada = alternativas[i].value;
+    for (var j = 0; j < alternativas.length; j++) {
+      if (alternativas[j].checked) {
+        respostaUsuario = alternativas[j].value;
       }
     }
 
-    if (respostaSelecionada == "") {
-      feedback.innerHTML = "Sem resposta.";
-    } else if (respostaSelecionada == respostasQuiz[numero - 1]) {
+    if (respostaUsuario == respostasQuiz[i - 1]) {
       pontuacao++;
-      feedback.innerHTML = "Resposta correta!";
+
+      if (feedback != null) {
+        feedback.innerHTML = "Resposta correta!";
+      }
     } else {
-      feedback.innerHTML = "Resposta incorreta.";
+      if (feedback != null) {
+        if (respostaUsuario == "") {
+          feedback.innerHTML = "Você não selecionou uma alternativa.";
+        } else {
+          feedback.innerHTML = "Resposta incorreta.";
+        }
+      }
     }
   }
 
-  var resultado = document.getElementById("resultadoQuiz");
+  var resultadoQuiz = document.getElementById("resultadoQuiz");
 
-  resultado.innerHTML =
-    "Você acertou " + pontuacao + " de " + respostasQuiz.length + " questões. ";
-
-  if (pontuacao == respostasQuiz.length) {
-    resultado.innerHTML += "Excelente trabalho!";
-  } else if (pontuacao >= 3) {
-    resultado.innerHTML += "Bom trabalho! Continue estudando.";
-  } else {
-    resultado.innerHTML += "Revise o conteúdo e tente novamente.";
+  if (resultadoQuiz != null) {
+    resultadoQuiz.innerHTML = "Você acertou " + pontuacao + " de " + respostasQuiz.length + " questões!";
   }
 }
 
 function reiniciarQuiz() {
-  for (var numero = 1; numero <= respostasQuiz.length; numero++) {
-    var alternativas = document.getElementsByName("questao" + numero);
+  for (var i = 1; i <= respostasQuiz.length; i++) {
+    var alternativas = document.getElementsByName("questao" + i);
+    var feedback = document.getElementById("feedback" + i);
 
-    for (var i = 0; i < alternativas.length; i++) {
-      alternativas[i].checked = false;
+    for (var j = 0; j < alternativas.length; j++) {
+      alternativas[j].checked = false;
     }
 
-    document.getElementById("feedback" + numero).innerHTML = "";
+    if (feedback != null) {
+      feedback.innerHTML = "";
+    }
   }
 
-  document.getElementById("resultadoQuiz").innerHTML = "";
+  var resultadoQuiz = document.getElementById("resultadoQuiz");
+
+  if (resultadoQuiz != null) {
+    resultadoQuiz.innerHTML = "";
+  }
 }
 
+var campoPesquisa = document.getElementById("pesquisaConteudo");
+var filtroCategoria = document.getElementById("filtroCategoria");
+var botaoPesquisar = document.getElementById("botaoPesquisar");
+var botaoFiltrar = document.getElementById("botaoFiltrar");
+var resultadoPesquisa = document.getElementById("resultadoPesquisa");
 var carrosselConteudos = document.getElementById("carrosselConteudos");
+var botaoAnterior = document.getElementById("botaoAnterior");
+var botaoProximo = document.getElementById("botaoProximo");
 
-if (carrosselConteudos != null) {
-  var cardsConteudo = carrosselConteudos.getElementsByClassName("card");
-  var cardsEncontrados = [];
-  var indiceCard = 0;
+var cardsEncontrados = [];
+var indiceCard = 0;
 
-  for (var i = 0; i < cardsConteudo.length; i++) {
-    cardsEncontrados.push(i);
+function obterCards() {
+  if (carrosselConteudos != null) {
+    return carrosselConteudos.getElementsByClassName("card");
+  } else {
+    return document.getElementsByClassName("card");
+  }
+}
+
+function mostrarCard() {
+  var cards = obterCards();
+
+  for (var i = 0; i < cards.length; i++) {
+    cards[i].style.display = "none";
   }
 
-  function mostrarCard() {
-    for (var i = 0; i < cardsConteudo.length; i++) {
-      cardsConteudo[i].style.display = "none";
+  if (cardsEncontrados.length > 0) {
+    cardsEncontrados[indiceCard].style.display = "block";
+
+    if (resultadoPesquisa != null) {
+      resultadoPesquisa.innerHTML = "Exibindo " + (indiceCard + 1) + " de " + cardsEncontrados.length + " resultado(s).";
     }
-
-    var resultadoPesquisa = document.getElementById("resultadoPesquisa");
-
-    if (cardsEncontrados.length == 0) {
+  } else {
+    if (resultadoPesquisa != null) {
       resultadoPesquisa.innerHTML = "Nenhum conteúdo encontrado.";
-      return;
     }
+  }
+}
 
-    if (indiceCard >= cardsEncontrados.length) {
-      indiceCard = 0;
-    } else if (indiceCard < 0) {
-      indiceCard = cardsEncontrados.length - 1;
-    }
+function filtrarConteudos() {
+  var cards = obterCards();
+  var textoPesquisa = "";
+  var categoriaSelecionada = "todos";
 
-    cardsConteudo[cardsEncontrados[indiceCard]].style.display = "block";
-
-    resultadoPesquisa.innerHTML =
-      "Conteúdo " +
-      (indiceCard + 1) +
-      " de " +
-      cardsEncontrados.length +
-      " encontrado(s).";
+  if (campoPesquisa != null) {
+    textoPesquisa = campoPesquisa.value.toLowerCase();
   }
 
-  function filtrarConteudos() {
-    var textoBusca = document
-      .getElementById("pesquisaConteudo")
-      .value.toLowerCase();
-    var categoriaSelecionada = document.getElementById("filtroCategoria").value;
-
-    cardsEncontrados = [];
-
-    for (var i = 0; i < cardsConteudo.length; i++) {
-      var textoCard = cardsConteudo[i].innerHTML.toLowerCase();
-      var categoriasCard =
-        " " + cardsConteudo[i].getAttribute("data-categorias") + " ";
-
-      var correspondeCategoria =
-        categoriaSelecionada == "todos" ||
-        categoriasCard.includes(" " + categoriaSelecionada + " ");
-      var correspondePesquisa = textoCard.includes(textoBusca);
-
-      if (correspondeCategoria && correspondePesquisa) {
-        cardsEncontrados.push(i);
-      }
-    }
-
-    indiceCard = 0;
-
-    mostrarCard();
+  if (filtroCategoria != null) {
+    categoriaSelecionada = filtroCategoria.value;
   }
 
-  function moverCarrossel(direcao) {
-    if (cardsEncontrados.length == 0) {
-      return;
+  cardsEncontrados = [];
+  indiceCard = 0;
+
+  for (var i = 0; i < cards.length; i++) {
+    var textoCard = cards[i].innerHTML.toLowerCase();
+    var categoriasCard = cards[i].getAttribute("data-categorias");
+
+    var correspondeTexto = textoCard.includes(textoPesquisa);
+    var correspondeCategoria = categoriaSelecionada == "todos" ||
+      (categoriasCard != null && categoriasCard.includes(categoriaSelecionada));
+
+    if (correspondeTexto && correspondeCategoria) {
+      cardsEncontrados.push(cards[i]);
     }
-
-    indiceCard += direcao;
-
-    if (indiceCard < 0) {
-      indiceCard = cardsEncontrados.length - 1;
-    } else if (indiceCard >= cardsEncontrados.length) {
-      indiceCard = 0;
-    }
-
-    mostrarCard();
   }
-
-  document.getElementById("pesquisaConteudo").onkeyup = filtrarConteudos;
-
-  document.getElementById("botaoPesquisar").onclick = filtrarConteudos;
-
-  document.getElementById("botaoFiltrar").onclick = filtrarConteudos;
-
-  document.getElementById("botaoAnterior").onclick = function () {
-    moverCarrossel(-1);
-  };
-
-  document.getElementById("botaoProximo").onclick = function () {
-    moverCarrossel(1);
-  };
 
   mostrarCard();
 }
 
+if (campoPesquisa != null) {
+  campoPesquisa.oninput = function () {
+    filtrarConteudos();
+  };
+}
+
+if (botaoPesquisar != null) {
+  botaoPesquisar.onclick = function () {
+    filtrarConteudos();
+  };
+}
+
+if (botaoFiltrar != null) {
+  botaoFiltrar.onclick = function () {
+    filtrarConteudos();
+  };
+}
+
+if (filtroCategoria != null) {
+  filtroCategoria.onchange = function () {
+    filtrarConteudos();
+  };
+}
+
+function moverCarrossel(direcao) {
+  if (cardsEncontrados.length > 0) {
+    indiceCard = indiceCard + direcao;
+
+    if (indiceCard >= cardsEncontrados.length) {
+      indiceCard = 0;
+    }
+
+    if (indiceCard < 0) {
+      indiceCard = cardsEncontrados.length - 1;
+    }
+
+    mostrarCard();
+  }
+}
+
+if (botaoAnterior != null) {
+  botaoAnterior.onclick = function () {
+    moverCarrossel(-1);
+  };
+}
+
+if (botaoProximo != null) {
+  botaoProximo.onclick = function () {
+    moverCarrossel(1);
+  };
+}
+
+if (carrosselConteudos != null) {
+  filtrarConteudos();
+}
+
 var botaoDNA = document.getElementById("botaoDNA");
 var botaoRNA = document.getElementById("botaoRNA");
-
 var informacaoDNA = document.getElementById("informacaoDNA");
 var informacaoRNA = document.getElementById("informacaoRNA");
 
-if (
-    botaoDNA != null &&
-    botaoRNA != null &&
-    informacaoDNA != null &&
-    informacaoRNA != null
-) {
-    botaoDNA.onclick = function () {
-        informacaoDNA.style.display = "block";
-        informacaoRNA.style.display = "none";
-    };
+if (informacaoDNA != null) {
+  informacaoDNA.style.display = "block";
+}
 
-    botaoRNA.onclick = function () {
-        informacaoDNA.style.display = "none";
-        informacaoRNA.style.display = "block";
-    };
+if (informacaoRNA != null) {
+  informacaoRNA.style.display = "none";
+}
+
+if (botaoDNA != null && informacaoDNA != null && informacaoRNA != null) {
+  botaoDNA.onclick = function () {
+    informacaoDNA.style.display = "block";
+    informacaoRNA.style.display = "none";
+  };
+}
+
+if (botaoRNA != null && informacaoDNA != null && informacaoRNA != null) {
+  botaoRNA.onclick = function () {
+    informacaoDNA.style.display = "none";
+    informacaoRNA.style.display = "block";
+  };
 }

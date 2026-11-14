@@ -355,9 +355,9 @@ button:hover,
   gap: 12px;
 }
 
-.controlesPesquisa input,
-.controlesPesquisa select {
-  min-width: 220px;
+.controlesPesquisa input {
+  width: 320px;
+  min-width: 280px;
   max-width: 100%;
   padding: 12px;
   border: 1px solid #8b6347;
@@ -365,6 +365,15 @@ button:hover,
   font: inherit;
 }
 
+.controlesPesquisa select {
+  width: 220px;
+  min-width: 220px;
+  max-width: 100%;
+  padding: 12px;
+  border: 1px solid #8b6347;
+  border-radius: 10px;
+  font: inherit;
+}
 .controlesCarrossel {
   display: flex;
   justify-content: center;
@@ -499,29 +508,48 @@ body.dark .botaoSaibaMais {
   }
 }
 
+.comparador {
+  background-color: #fffdf8;
+  width: 90%;
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(73, 53, 45, 0.12);
+}
+
 .informacaoMolecula {
-    display: none;
+  display: none;
 }
 
 #informacaoDNA {
-    display: block;
+  display: block;
 }
 
 .botoesComparador {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
 }
 
 .botoesComparador button {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .botoesComparador button:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+#informacoesComparador {
+  padding: 15px;
+  border-radius: 10px;
+}
+
+body.dark .comparador {
+  background-color: #382b25;
+  color: #f5ebdd;
 }
