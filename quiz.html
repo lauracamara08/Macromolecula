@@ -1,147 +1,164 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link rel="stylesheet" href="css/style.css">
-   <script src="script.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Quiz</title>
-</head>
-<body>
-     <nav class="menu"> 
-    <div class="itemMenu">
-    <a href="index.html"> Inicio</a>
-    </div> 
-    
-     <div class="itemMenu">
-                <a href="#">Contéudos</a>
+  </head>
+  <body>
+    <nav class="menu">
+      <button id="botaoTema">Tema escuro</button>
+      <button id="botaoMenu" class="botaoMenu" type="button">Menu</button>
+      <div class="itemMenu">
+        <a href="index.html"> Inicio</a>
+      </div>
 
-                <div class="submenu">
-                    <a href="polimeros.html">Polímeros</a>
-                    <a href="lipidios.html">Lipidios</a>
-                    <a href="carboidratos.html">Carboidratos</a>
-                    <a href="proteinas.html">Proteínas</a>
-                    <a href="acidos-nucleicos.html">Ácidos Nucleicos</a>
-                </div>
-            </div>
-         <div class="itemMenu">
-    <a href="#"> Sobre</a>
-    </div>
-     <div class="itemMenu">
-    <a href="quiz.html"> Quiz</a>
-    </div> 
+      <div class="itemMenu">
+        <a href="#">Contéudos</a>
+
+        <div class="submenu">
+          <a href="polimeros.html">Polímeros</a>
+          <a href="lipidios.html">Lipidios</a>
+          <a href="carboidratos.html">Carboidratos</a>
+          <a href="proteinas.html">Proteínas</a>
+          <a href="acidos-nucleicos.html">Ácidos Nucleicos</a>
+        </div>
+      </div>
+      <div class="itemMenu">
+        <a href="#"> Sobre</a>
+      </div>
+      <div class="itemMenu">
+        <a href="quiz.html"> Quiz</a>
+      </div>
     </nav>
 
     <header>
-       
-            <h1>O Mestre mandou...testar seus conhecimentos!🎩💡</h1>
-            <p>Agora que você já sabe os principais 
-fundamentos das moléculas,  chegou a hora de 
-testar seus conhecimentos e saber se você 
-realmente entendeu o conteúdo.🧬</p>
-<p>Eai, preparado(a)? Vamos lá!✨</p>       
+      <h1>O Mestre mandou...testar seus conhecimentos!🎩💡</h1>
+      <p>
+        Agora que você já sabe os principais fundamentos das moléculas, chegou a
+        hora de testar seus conhecimentos e saber se você realmente entendeu o
+        conteúdo.🧬
+      </p>
+      <p>Eai, preparado(a)? Vamos lá!✨</p>
     </header>
 
     <section id="primeira">
-        <p>1. Quais os tipos de carboidratos? </p>
-        <input type="radio" name="questao1" value="A">
-        A. Simples e compostos
-    </input>
-    <input type="radio" name="questao1" value="B">
-       B. Compostos e complexos
-    </input>
-    <input type="radio" name="questao1" value="C">
-       B. Compostos e complexos
-    </input>
-    <input type="radio" name="questao1" value="D">
-       B. Compostos e complexos
-    </input>
-      <button type="submit">Enviar resposta</button>
+      <p>1. Quais os tipos de carboidratos?</p>
+
+      <input type="radio" name="questao1" value="A" />
+      A. Monossacarídeos e polissacarídeos
+
+      <input type="radio" name="questao1" value="B" />
+      B. Simples e complexos
+
+      <input type="radio" name="questao1" value="C" />
+      C. Monossacarídeos, dissacarídeos e polissacarídeos
+
+      <input type="radio" name="questao1" value="D" />
+      D. Aldoses e cetoses
+
+      <button type="button" onclick="verificarQuestao(1)">
+        Enviar resposta
+      </button>
+      <p class="feedback" id="feedback1"></p>
     </section>
 
-       <section id="segunda">
-        <p>2. Sobre os polímeros naturais e sintéticos,  é 
-correto afirmar que: </p>
-        <input type="radio" name="questao2" value="A">
-        A. Polímeros sintéticos são encontrados na 
-natureza e os naturais por humanos 
-    </input>
-    <input type="radio" name="questao2" value="B">
-       B.Poliestireno pode ser encontrado na natureza
-    </input>
-    <input type="radio" name="questao2" value="C">
-        C. Os plásticos são apenas sintéticos. 
-    </input>
-    <input type="radio" name="questao2" value="D">
-       D. Celulose é um exemplo de polímeros naturais. 
-    </input>
-      <button type="submit">Enviar resposta</button>
+    <section id="segunda">
+      <p>2. Sobre os polímeros naturais e sintéticos, é correto afirmar que:</p>
+
+      <input type="radio" name="questao2" value="A" />
+      A. Polímeros sintéticos são encontrados na natureza e os naturais por
+      humanos
+
+      <input type="radio" name="questao2" value="B" />
+      B. Poliestireno pode ser encontrado na natureza
+
+      <input type="radio" name="questao2" value="C" />
+      C. Os plásticos são apenas sintéticos.
+
+      <input type="radio" name="questao2" value="D" />
+      D. Celulose é um exemplo de polímeros naturais.
+
+      <button type="button" onclick="verificarQuestao(2)">
+        Enviar resposta
+      </button>
+      <p class="feedback" id="feedback2"></p>
     </section>
 
-       <section id="terceira">
-        <p>3. Considerando tudo o que aprendeu sobre os 
-aminoácidos e proteínas, escolha a alternativa 
-que melhor define o que são "ligações 
-peptídicas"</p>
-        <input type="radio" name="questao3" value="A">
-        A.É a síntese das proteínas
-    </input>
-    <input type="radio" name="questao3" value="B">
-B. Conecta dois aminoácidos 
-    </input>
-    <input type="radio" name="questao3" value="C">
-       C. Moléculas que possuem pelo menos um 
-grupo amina
-    </input>
-    <input type="radio" name="questao3" value="D">
-       D. Estrutura tridimensional e a função da 
-proteína.  
-    </input>
-      <button type="submit">Enviar resposta</button>
-    </section>
+    <section id="terceira">
+      <p>
+        3. Considerando tudo o que aprendeu sobre os aminoácidos e proteínas,
+        escolha a alternativa que melhor define o que são "ligações peptídicas".
+      </p>
 
-       <section id="quarta">
-        <p>4. Os lipidios são: </p>
-        <input type="radio" name="questao4" value="A">
-        A.  Moléculas orgânicas insolúveis em água e 
-solúveis em certas substâncias orgânicas. 
-    </input>
-    <input type="radio" name="questao4" value="B">
-       B. Moléculas orgânicas solúveis apenas em 
-água.
-    </input>
-    <input type="radio" name="questao4" value="C">
-       C. Moléculas solúveis em água e em certas 
-substâncias orgânicas. 
-    </input>
-    <input type="radio" name="questao4" value="D">
-        D.  Moléculas insolúveis em certas substâncias 
-orgânicas.
-    </input>
-      <button type="submit">Enviar resposta</button>
-    </section>
+      <input type="radio" name="questao3" value="A" />
+      A. É a síntese das proteínas
 
-       <section id="quinta">
-        <p>5. O DNA e o RNA são ácidos nucleicos 
-importantes para o funcionamento das células, 
-mas apresentam diferenças em sua estrutura e 
-função. Sabendo disso, defina a estrutura de 
-cada um. </p>
-        <input type="radio" name="questao5" value="A">
-      A. DNA possui uma única fita enquanto RNA 
-possui duas fitas.
-    </input>
-    <input type="radio" name="questao5" value="B">
-       B. DNA possui uma única fita e RNA duas. 
-    </input>
-    <input type="radio" name="questao5" value="C">
-       C. O DNA e o RNA possuem a mesma estrutura. 
-    </input>
-    <input type="radio" name="questao5" value="D">
-       D. O DNA possui mais de duas fitas e o RNA 
-duas. 
-    </input>
-    <button type="submit">Enviar resposta</button>
+      <input type="radio" name="questao3" value="B" />
+      B. Conecta dois aminoácidos
+
+      <input type="radio" name="questao3" value="C" />
+      C. Moléculas que possuem pelo menos um grupo amina
+
+      <input type="radio" name="questao3" value="D" />
+      D. Estrutura tridimensional e a função da proteína.
+
+      <button type="button" onclick="verificarQuestao(3)">
+        Enviar resposta
+      </button>
+      <p class="feedback" id="feedback3"></p>
     </section>
-</body>
+    <section id="quarta">
+      <p>4. Os lipídios são:</p>
+
+      <input type="radio" name="questao4" value="A" />
+      A. Moléculas orgânicas insolúveis em água e solúveis em certas substâncias
+      orgânicas.
+
+      <input type="radio" name="questao4" value="B" />
+      B. Moléculas orgânicas solúveis apenas em água.
+
+      <input type="radio" name="questao4" value="C" />
+      C. Moléculas solúveis em água e em certas substâncias orgânicas.
+
+      <input type="radio" name="questao4" value="D" />
+      D. Moléculas insolúveis em certas substâncias orgânicas.
+
+      <button type="button" onclick="verificarQuestao(4)">
+        Enviar resposta
+      </button>
+      <p class="feedback" id="feedback4"></p>
+    </section>
+    <section id="quinta">
+      <p>
+        5. O DNA e o RNA são ácidos nucleicos importantes para o funcionamento
+        das células, mas apresentam diferenças em sua estrutura e função.
+        Sabendo disso, defina a estrutura de cada um.
+      </p>
+
+      <input type="radio" name="questao5" value="A" />
+      A. DNA possui uma única fita enquanto RNA possui duas fitas.
+
+      <input type="radio" name="questao5" value="B" />
+      B. DNA possui duas fitas e RNA também possui duas fitas.
+
+      <input type="radio" name="questao5" value="C" />
+      C. O DNA e o RNA possuem a mesma estrutura.
+
+      <input type="radio" name="questao5" value="D" />
+      D. O DNA possui duas fitas e o RNA geralmente possui uma fita.
+
+      <button type="button" onclick="verificarQuestao(5)">
+        Enviar resposta
+      </button>
+      <p class="feedback" id="feedback5"></p>
+    </section>
+    <section class="resultadoQuiz">
+      <button type="button" onclick="finalizarQuiz()">Ver resultado</button>
+      <p id="resultadoQuiz"></p>
+      <button type="button" onclick="reiniciarQuiz()">Reiniciar quiz</button>
+    </section>
+    <script src="js/script.js"></script>
+  </body>
 </html>
