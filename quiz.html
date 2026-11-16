@@ -1,165 +1,257 @@
+
 <!doctype html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Quiz</title>
-  </head>
-  <body>
-    <nav class="menu">
-      <button id="botaoTema">Tema escuro</button>
-      <button id="botaoMenu" class="botaoMenu" type="button">Menu</button>
-      <div class="itemMenu">
-        <a href="index.html"> Inicio</a>
-      </div>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/style.css" />
+        <title>Quiz - MacroMestre</title>
+    </head>
 
-      <div class="itemMenu">
-        <a href="#">Contéudos</a>
+    <body>
+        <nav class="menu">
+            <button id="botaoTema" type="button">Tema escuro</button>
+            <button id="botaoMenu" class="botaoMenu" type="button">Menu</button>
 
-        <div class="submenu">
-          <a href="polimeros.html">Polímeros</a>
-          <a href="lipidios.html">Lipidios</a>
-          <a href="carboidratos.html">Carboidratos</a>
-          <a href="proteinas.html">Proteínas</a>
-          <a href="acidos-nucleicos.html">Ácidos Nucleicos</a>
-        </div>
-      </div>
-      <div class="itemMenu">
-        <a href="#"> Sobre</a>
-      </div>
-      <div class="itemMenu">
-        <a href="quiz.html"> Quiz</a>
-      </div>
-    </nav>
+            <div class="itemMenu">
+                <a href="index.html">Início</a>
+            </div>
 
-    <header>
-      <h1>O Mestre mandou...testar seus conhecimentos!🎩💡</h1>
-      <p>
-        Agora que você já sabe os principais fundamentos das moléculas, chegou a
-        hora de testar seus conhecimentos e saber se você realmente entendeu o
-        conteúdo.🧬
-        <br />
-        Eai, preparado(a)? Vamos lá!✨
-      </p>
-    </header>
+            <div class="itemMenu">
+                <a href="#">Conteúdos</a>
+                <div class="submenu">
+                    <a href="polimeros.html">Polímeros</a>
+                    <a href="lipidios.html">Lipídios</a>
+                    <a href="carboidratos.html">Carboidratos</a>
+                    <a href="proteinas.html">Proteínas</a>
+                    <a href="acidos-nucleicos.html">Ácidos Nucleicos</a>
+                </div>
+            </div>
 
-    <section id="primeira">
-      <p>1. Quais os tipos de carboidratos?</p>
+            <div class="itemMenu">
+                <a href="index.html#sobre">Sobre</a>
+            </div>
 
-      <input type="radio" name="questao1" value="A" />
-      A. Monossacarídeos e polissacarídeos
+            <div class="itemMenu">
+                <a href="quiz.html" class="paginaAtual">Quiz</a>
+            </div>
+        </nav>
 
-      <input type="radio" name="questao1" value="B" />
-      B. Simples e complexos
+        <main class="quiz">
+            <header>
+                <h1>O Mestre mandou... testar seus conhecimentos! 🎩💡</h1>
+                <p>
+                    Agora que você já sabe os principais fundamentos das moléculas,
+                    chegou a hora de testar seus conhecimentos e saber se você realmente
+                    entendeu o conteúdo. 🧬
+                    <br />
+                    E aí, preparado(a)? Vamos lá! ✨
+                </p>
+            </header>
 
-      <input type="radio" name="questao1" value="C" />
-      C. Monossacarídeos, dissacarídeos e polissacarídeos
+            <section class="questao" id="primeira">
+                <p class="progressoQuiz">PERGUNTA 1 DE 5</p>
+                <h2>1. Quais os tipos de carboidratos?</h2>
 
-      <input type="radio" name="questao1" value="D" />
-      D. Aldoses e cetoses
+                <label>
+                    <input type="radio" name="questao1" value="A" />
+                    A. Monossacarídeos e polissacarídeos
+                </label>
 
-      <button type="button" onclick="verificarQuestao(1)">
-        Enviar resposta
-      </button>
-      <p class="feedback" id="feedback1"></p>
-    </section>
+                <label>
+                    <input type="radio" name="questao1" value="B" />
+                    B. Simples e complexos
+                </label>
 
-    <section id="segunda">
-      <p>2. Sobre os polímeros naturais e sintéticos, é correto afirmar que:</p>
+                <label>
+                    <input type="radio" name="questao1" value="C" />
+                    C. Monossacarídeos, dissacarídeos e polissacarídeos
+                </label>
 
-      <input type="radio" name="questao2" value="A" />
-      A. Polímeros sintéticos são encontrados na natureza e os naturais por
-      humanos
+                <label>
+                    <input type="radio" name="questao1" value="D" />
+                    D. Aldoses e cetoses
+                </label>
 
-      <input type="radio" name="questao2" value="B" />
-      B. Poliestireno pode ser encontrado na natureza
+                <button type="button" onclick="verificarQuestao(1)">
+                    Enviar resposta
+                </button>
 
-      <input type="radio" name="questao2" value="C" />
-      C. Os plásticos são apenas sintéticos.
+                <p class="feedback" id="feedback1"></p>
 
-      <input type="radio" name="questao2" value="D" />
-      D. Celulose é um exemplo de polímeros naturais.
+                <div class="navegacaoQuiz">
+                    <a href="#segunda" class="botaoSaibaMais">Próxima pergunta</a>
+                </div>
+            </section>
 
-      <button type="button" onclick="verificarQuestao(2)">
-        Enviar resposta
-      </button>
-      <p class="feedback" id="feedback2"></p>
-    </section>
+            <section class="questao" id="segunda">
+                <p class="progressoQuiz">PERGUNTA 2 DE 5</p>
+                <h2>2. Sobre os polímeros naturais e sintéticos, é correto afirmar que:</h2>
 
-    <section id="terceira">
-      <p>
-        3. Considerando tudo o que aprendeu sobre os aminoácidos e proteínas,
-        escolha a alternativa que melhor define o que são "ligações peptídicas".
-      </p>
+                <label>
+                    <input type="radio" name="questao2" value="A" />
+                    A. Polímeros sintéticos são encontrados na natureza e os naturais por humanos.
+                </label>
 
-      <input type="radio" name="questao3" value="A" />
-      A. É a síntese das proteínas
+                <label>
+                    <input type="radio" name="questao2" value="B" />
+                    B. Poliestireno pode ser encontrado na natureza.
+                </label>
 
-      <input type="radio" name="questao3" value="B" />
-      B. Conecta dois aminoácidos
+                <label>
+                    <input type="radio" name="questao2" value="C" />
+                    C. Os plásticos são apenas sintéticos.
+                </label>
 
-      <input type="radio" name="questao3" value="C" />
-      C. Moléculas que possuem pelo menos um grupo amina
+                <label>
+                    <input type="radio" name="questao2" value="D" />
+                    D. Celulose é um exemplo de polímero natural.
+                </label>
 
-      <input type="radio" name="questao3" value="D" />
-      D. Estrutura tridimensional e a função da proteína.
+                <button type="button" onclick="verificarQuestao(2)">
+                    Enviar resposta
+                </button>
 
-      <button type="button" onclick="verificarQuestao(3)">
-        Enviar resposta
-      </button>
-      <p class="feedback" id="feedback3"></p>
-    </section>
-    <section id="quarta">
-      <p>4. Os lipídios são:</p>
+                <p class="feedback" id="feedback2"></p>
 
-      <input type="radio" name="questao4" value="A" />
-      A. Moléculas orgânicas insolúveis em água e solúveis em certas substâncias
-      orgânicas.
+                <div class="navegacaoQuiz">
+                    <a href="#primeira" class="botaoSaibaMais">Anterior</a>
+                    <a href="#terceira" class="botaoSaibaMais">Próxima pergunta</a>
+                </div>
+            </section>
 
-      <input type="radio" name="questao4" value="B" />
-      B. Moléculas orgânicas solúveis apenas em água.
+            <section class="questao" id="terceira">
+                <p class="progressoQuiz">PERGUNTA 3 DE 5</p>
+                <h2>
+                    3. Considerando tudo o que aprendeu sobre os aminoácidos e proteínas,
+                    escolha a alternativa que melhor define o que são ligações peptídicas.
+                </h2>
 
-      <input type="radio" name="questao4" value="C" />
-      C. Moléculas solúveis em água e em certas substâncias orgânicas.
+                <label>
+                    <input type="radio" name="questao3" value="A" />
+                    A. É a síntese das proteínas.
+                </label>
 
-      <input type="radio" name="questao4" value="D" />
-      D. Moléculas insolúveis em certas substâncias orgânicas.
+                <label>
+                    <input type="radio" name="questao3" value="B" />
+                    B. Conecta dois aminoácidos.
+                </label>
 
-      <button type="button" onclick="verificarQuestao(4)">
-        Enviar resposta
-      </button>
-      <p class="feedback" id="feedback4"></p>
-    </section>
-    <section id="quinta">
-      <p>
-        5. O DNA e o RNA são ácidos nucleicos importantes para o funcionamento
-        das células, mas apresentam diferenças em sua estrutura e função.
-        Sabendo disso, defina a estrutura de cada um.
-      </p>
+                <label>
+                    <input type="radio" name="questao3" value="C" />
+                    C. Moléculas que possuem pelo menos um grupo amina.
+                </label>
 
-      <input type="radio" name="questao5" value="A" />
-      A. DNA possui uma única fita enquanto RNA possui duas fitas.
+                <label>
+                    <input type="radio" name="questao3" value="D" />
+                    D. Estrutura tridimensional e a função da proteína.
+                </label>
 
-      <input type="radio" name="questao5" value="B" />
-      B. DNA possui duas fitas e RNA também possui duas fitas.
+                <button type="button" onclick="verificarQuestao(3)">
+                    Enviar resposta
+                </button>
 
-      <input type="radio" name="questao5" value="C" />
-      C. O DNA e o RNA possuem a mesma estrutura.
+                <p class="feedback" id="feedback3"></p>
 
-      <input type="radio" name="questao5" value="D" />
-      D. O DNA possui duas fitas e o RNA geralmente possui uma fita.
+                <div class="navegacaoQuiz">
+                    <a href="#segunda" class="botaoSaibaMais">Anterior</a>
+                    <a href="#quarta" class="botaoSaibaMais">Próxima pergunta</a>
+                </div>
+            </section>
 
-      <button type="button" onclick="verificarQuestao(5)">
-        Enviar resposta
-      </button>
-      <p class="feedback" id="feedback5"></p>
-    </section>
-    <section class="resultadoQuiz">
-      <button type="button" onclick="finalizarQuiz()">Ver resultado</button>
-      <p id="resultadoQuiz"></p>
-      <button type="button" onclick="reiniciarQuiz()">Reiniciar quiz</button>
-    </section>
-    <script src="js/script.js"></script>
-  </body>
+            <section class="questao" id="quarta">
+                <p class="progressoQuiz">PERGUNTA 4 DE 5</p>
+                <h2>4. Os lipídios são:</h2>
+
+                <label>
+                    <input type="radio" name="questao4" value="A" />
+                    A. Moléculas orgânicas insolúveis em água e solúveis em certas substâncias orgânicas.
+                </label>
+
+                <label>
+                    <input type="radio" name="questao4" value="B" />
+                    B. Moléculas orgânicas solúveis apenas em água.
+                </label>
+
+                <label>
+                    <input type="radio" name="questao4" value="C" />
+                    C. Moléculas solúveis em água e em certas substâncias orgânicas.
+                </label>
+
+                <label>
+                    <input type="radio" name="questao4" value="D" />
+                    D. Moléculas insolúveis em certas substâncias orgânicas.
+                </label>
+
+                <button type="button" onclick="verificarQuestao(4)">
+                    Enviar resposta
+                </button>
+
+                <p class="feedback" id="feedback4"></p>
+
+                <div class="navegacaoQuiz">
+                    <a href="#terceira" class="botaoSaibaMais">Anterior</a>
+                    <a href="#quinta" class="botaoSaibaMais">Próxima pergunta</a>
+                </div>
+            </section>
+
+            <section class="questao" id="quinta">
+                <p class="progressoQuiz">PERGUNTA 5 DE 5</p>
+                <h2>
+                    5. O DNA e o RNA são ácidos nucleicos importantes para o funcionamento
+                    das células, mas apresentam diferenças em sua estrutura e função.
+                    Sabendo disso, defina a estrutura de cada um.
+                </h2>
+
+                <label>
+                    <input type="radio" name="questao5" value="A" />
+                    A. DNA possui uma única fita enquanto RNA possui duas fitas.
+                </label>
+
+                <label>
+                    <input type="radio" name="questao5" value="B" />
+                    B. DNA possui duas fitas e RNA também possui duas fitas.
+                </label>
+
+                <label>
+                    <input type="radio" name="questao5" value="C" />
+                    C. O DNA e o RNA possuem a mesma estrutura.
+                </label>
+
+                <label>
+                    <input type="radio" name="questao5" value="D" />
+                    D. O DNA possui duas fitas e o RNA geralmente possui uma fita.
+                </label>
+
+                <button type="button" onclick="verificarQuestao(5)">
+                    Enviar resposta
+                </button>
+
+                <p class="feedback" id="feedback5"></p>
+
+                <div class="navegacaoQuiz">
+                    <a href="#quarta" class="botaoSaibaMais">Anterior</a>
+                    <a href="#resultadoFinal" class="botaoSaibaMais">Ver resultado</a>
+                </div>
+            </section>
+
+            <section class="resultadoQuiz" id="resultadoFinal">
+                <h2>Você chegou ao final! 🎉</h2>
+
+                <button type="button" onclick="finalizarQuiz()">
+                    Ver resultado
+                </button>
+
+                <p id="resultadoQuiz"></p>
+
+                <button type="button" onclick="reiniciarQuiz()">
+                    Reiniciar quiz
+                </button>
+
+                <a href="#primeira" class="botaoSaibaMais">Voltar ao início</a>
+            </section>
+        </main>
+
+        <script src="js/script.js"></script>
+    </body>
 </html>
